@@ -1,0 +1,21 @@
+CREATE OR REPLACE VIEW view_accomodation_list AS
+SELECT 
+    a.accomodation_no,
+    a.accomodation_addr,
+    a.accomodation_name,
+    a.accomodation_price,
+    f.accomodation_file_fname1,
+    COUNT(r.accomodation_review_star) AS review_count,
+    AVG(r.accomodation_review_star) AS avg_review_star
+FROM
+    accomodation a
+INNER JOIN
+    accomodation_file f ON a.accomodation_no = f.accomodation_no
+INNER JOIN
+    accomodation_review r ON a.accomodation_no = r.accomodation_no
+GROUP BY
+    a.accomodation_no,
+    a.accomodation_addr,
+    a.accomodation_name,
+    a.accomodation_price,
+    f.accomodation_file_fname1;
