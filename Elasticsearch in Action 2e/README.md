@@ -1,1 +1,1 @@
-# Elasticsearch in Action se
+# Elasticsearch in Action 2e
